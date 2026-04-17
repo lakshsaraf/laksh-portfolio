@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, X } from 'lucide-react';
-import imgMobile from '../assets/IMG_0761.PNG';
 
 const projects = [
   {
@@ -9,7 +8,7 @@ const projects = [
     title: 'Mobile & Mobile',
     description: 'Comprehensive social media management and growth strategy for 3 local mobile and accessories shops.',
     tags: ['Social Media', 'Growth'],
-    image: imgMobile,
+    image: 'https://graph.facebook.com/mandmbrt/picture?type=large',
     link: 'https://www.instagram.com/mandmbrt/',
     isLogo: true,
   },
