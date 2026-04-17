@@ -149,6 +149,7 @@ export function Hero() {
             </a>
             <a
               href="/Laksh_Saraf_CV.pdf"
+              target="_blank"
               download="Laksh_Saraf_CV.pdf"
               className="group flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-sans font-semibold text-sm text-white bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all w-full sm:w-auto hover-trigger shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
             >
