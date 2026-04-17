@@ -10,6 +10,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { BentoGrid } from './components/BentoGrid';
 import { Portfolio } from './components/Portfolio';
+import { Accomplishments } from './components/Accomplishments';
 import { TechStack } from './components/TechStack';
 import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
@@ -22,6 +23,7 @@ export default function App() {
       autoRaf: true,
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      touchMultiplier: 1.5,
     });
     
     return () => {
@@ -38,6 +40,7 @@ export default function App() {
         <Hero />
         <BentoGrid />
         <Portfolio />
+        <Accomplishments />
         <TechStack />
         <Testimonials />
         <FAQ />

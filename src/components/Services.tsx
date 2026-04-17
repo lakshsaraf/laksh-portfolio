@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -25,7 +25,7 @@ const services = [
   },
 ];
 
-function ServiceRow({ service, index }: { service: any, index: number }) {
+const ServiceRow: React.FC<{ service: any, index: number }> = ({ service, index }) => {
   const ref = useRef<HTMLDivElement>(null);
   
   const x = useMotionValue(0);

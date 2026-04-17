@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef, useEffect, useState, MouseEvent as ReactMouseEvent } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 
 const testimonials = [
@@ -28,7 +28,7 @@ const testimonials = [
   }
 ];
 
-function TestimonialCard({ testimonial }: { testimonial: any }) {
+const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial }) => {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -39,7 +39,7 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
@@ -66,13 +66,13 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
         whileHover={{ y: -12 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="w-[280px] sm:w-[350px] md:w-[450px] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-2xl p-6 md:p-10 flex flex-col justify-between min-h-[250px] md:min-h-[300px] hover:shadow-[0_20px_40px_rgba(255,144,232,0.15)] hover:border-[#ff90e8]/30 transition-colors transition-shadow duration-500 cursor-pointer relative overflow-hidden group"
+        className="w-[260px] sm:w-[350px] md:w-[450px] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-2xl p-5 md:p-10 flex flex-col justify-between min-h-[200px] md:min-h-[300px] hover:shadow-[0_20px_40px_rgba(255,144,232,0.15)] hover:border-[#ff90e8]/30 transition-colors transition-shadow duration-500 cursor-pointer relative overflow-hidden group select-none"
       >
         <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
-        <p className="text-lg md:text-2xl text-white/90 leading-relaxed mb-6 md:mb-8 font-medium relative z-10" style={{ transform: "translateZ(30px)" }}>
+        <p className="text-base md:text-2xl text-white/90 leading-relaxed mb-4 md:mb-8 font-medium relative z-10" style={{ transform: "translateZ(30px)" }}>
           “{testimonial.quote}”
         </p>
-        <div className="flex items-center gap-4 border-t border-border/50 pt-6 relative z-10" style={{ transform: "translateZ(20px)" }}>
+        <div className="flex items-center gap-3 md:gap-4 border-t border-border/50 pt-4 md:pt-6 relative z-10" style={{ transform: "translateZ(20px)" }}>
           <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 font-semibold text-lg shrink-0">
             {testimonial.initial}
           </div>
@@ -87,11 +87,80 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
 }
 
 export function Testimonials() {
-  // Duplicate array to create seamless infinite scroll
   const marqueeItems = [...testimonials, ...testimonials, ...testimonials];
+  
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  useEffect(() => {
+    let animationId: number;
+    let isPaused = false;
+    
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    const handleMouseEnter = () => !isDragging && (isPaused = true);
+    const handleMouseLeave = () => {
+      if(!isDragging) isPaused = false;
+    };
+    
+    // Resume auto-scroll if dragging stopped and mouse left
+    if (!isDragging) {
+      isPaused = false;
+    }
+
+    scroller.addEventListener('mouseenter', handleMouseEnter);
+    scroller.addEventListener('mouseleave', handleMouseLeave);
+    scroller.addEventListener('touchstart', handleMouseEnter, {passive: true});
+    scroller.addEventListener('touchend', handleMouseLeave);
+
+    const step = () => {
+      if (scroller && !isPaused && !isDragging) {
+        scroller.scrollLeft += 0.5; // Decreased speed
+        
+        const singleSetWidth = scroller.scrollWidth / 3;
+        if (scroller.scrollLeft >= singleSetWidth * 2) {
+          scroller.scrollLeft -= singleSetWidth;
+        } else if (scroller.scrollLeft <= 0) {
+          scroller.scrollLeft += singleSetWidth;
+        }
+      }
+      animationId = requestAnimationFrame(step);
+    };
+
+    animationId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      scroller.removeEventListener('mouseenter', handleMouseEnter);
+      scroller.removeEventListener('mouseleave', handleMouseLeave);
+      scroller.removeEventListener('touchstart', handleMouseEnter);
+      scroller.removeEventListener('touchend', handleMouseLeave);
+    };
+  }, [isDragging]);
+
+  const onDragStart = (e: ReactMouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollerRef.current!.offsetLeft);
+    setScrollLeft(scrollerRef.current!.scrollLeft);
+  };
+  
+  const onDragEnd = () => {
+    setIsDragging(false);
+  };
+  
+  const onDragMove = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
-    <section id="testimonials" className="py-20 md:py-32 border-t border-border overflow-hidden relative">
+    <section id="testimonials" className="py-12 md:py-32 border-t border-border overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -101,7 +170,7 @@ export function Testimonials() {
           className="flex flex-col items-center mb-12"
         >
           <div className="w-full flex justify-center mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-center relative z-20 py-6 text-white">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-center relative z-20 py-4 md:py-6 text-white">
               Results speak <br /> <span className="font-serif italic font-medium text-[#ff90e8] text-[0.9em] tracking-normal">louder than words</span>
             </h2>
           </div>
@@ -109,10 +178,17 @@ export function Testimonials() {
       </div>
 
       <div className="relative w-full overflow-hidden mt-4 py-10">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
         
-        <div className="flex gap-4 md:gap-6 animate-marquee hover:[animation-play-state:paused]" style={{ '--duration': '35s' } as React.CSSProperties}>
+        <div 
+          ref={scrollerRef}
+          className="flex gap-4 md:gap-6 overflow-x-auto hide-scrollbar select-none cursor-grab active:cursor-grabbing px-4 md:px-12"
+          onMouseDown={onDragStart}
+          onMouseUp={onDragEnd}
+          onMouseLeave={onDragEnd}
+          onMouseMove={onDragMove}
+        >
           {marqueeItems.map((testimonial, idx) => (
             <TestimonialCard key={idx} testimonial={testimonial} />
           ))}

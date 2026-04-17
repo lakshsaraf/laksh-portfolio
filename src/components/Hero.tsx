@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { ArrowUpRight, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowUpRight, MessageCircle, Sparkles, Download } from 'lucide-react';
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -59,7 +59,7 @@ export function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden pt-28 md:pt-32 pb-12 md:pb-20 text-center perspective-1000"
+      className="relative min-h-[90svh] flex flex-col items-center justify-center overflow-hidden pt-24 md:pt-32 pb-10 md:pb-20 text-center perspective-1000"
     >
       {/* 3D Floating Background Elements */}
       <motion.div
@@ -116,7 +116,7 @@ export function Hero() {
           <motion.h1 
             custom={60}
             variants={itemVariants} 
-            className="text-5xl sm:text-6xl lg:text-[70px] leading-[1.15] font-display font-semibold tracking-tight mb-6 text-white"
+            className="text-4xl sm:text-5xl lg:text-[70px] leading-[1.15] font-display font-semibold tracking-tight mb-6 text-white"
           >
             Your All-In-One <br />
             Digital Growth <span className="font-serif italic font-medium text-[#ff90e8] text-[0.85em] tracking-normal inline-block">Partner</span>
@@ -126,7 +126,7 @@ export function Hero() {
           <motion.p 
             custom={30}
             variants={itemVariants} 
-            className="text-base md:text-xl text-text-secondary max-w-2xl mb-10 leading-relaxed px-4 md:px-0"
+            className="text-sm md:text-xl text-text-secondary max-w-2xl mb-8 leading-relaxed px-4 md:px-0"
           >
             I help ambitious brands dominate their market through strategic social media management, high-converting websites, and scroll-stopping visuals.
           </motion.p>
@@ -135,7 +135,7 @@ export function Hero() {
           <motion.div 
             custom={50}
             variants={itemVariants} 
-            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 sm:px-0"
+            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0"
           >
             <a
               href="https://wa.me/9779702292536?text=Hi%20Laksh,%20I'd%20like%20to%20book%20a%20free%20discovery%20call!"
@@ -148,11 +148,12 @@ export function Hero() {
               <span className="relative z-10">LET'S TALK</span>
             </a>
             <a
-              href="#work"
+              href="/Laksh_Saraf_CV.pdf"
+              download="Laksh_Saraf_CV.pdf"
               className="group flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-sans font-semibold text-sm text-white bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all w-full sm:w-auto hover-trigger shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
             >
-              <ArrowUpRight className="w-4 h-4" />
-              <span>MY WORK</span>
+              <Download className="w-4 h-4" />
+              <span>DOWNLOAD CV</span>
             </a>
           </motion.div>
         </motion.div>

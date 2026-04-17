@@ -1,9 +1,10 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import { Video, Image as ImageIcon, PenTool, MonitorPlay, Smartphone, Share2, Sparkles, Camera } from 'lucide-react';
 
 export function TechStack() {
   return (
-    <section className="py-16 md:py-32 border-t border-border overflow-hidden relative">
+    <section className="py-12 md:py-32 border-t border-border overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -12,7 +13,7 @@ export function TechStack() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="w-full py-8 flex flex-col items-center justify-center mb-6"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-center relative z-20 mb-6 text-white">
+          <h2 className="text-3xl md:text-5xl font-semibold text-center relative z-20 mb-6 text-white">
             My Creative Arsenal
           </h2>
           <p className="text-center text-text-secondary max-w-2xl text-lg">
@@ -25,7 +26,7 @@ export function TechStack() {
           </p>
         </motion.div>
 
-        <div className="relative h-[500px] md:h-[800px] w-full flex flex-col items-center justify-center mt-12 perspective-1000">
+        <div className="relative h-[380px] md:h-[800px] w-full flex flex-col items-center justify-center mt-8 md:mt-12 perspective-1000 scale-75 md:scale-100 origin-center">
           {/* Center Logo */}
           <motion.div 
             animate={{ y: [0, -10, 0] }}

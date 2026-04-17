@@ -50,7 +50,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-16 md:py-24 border-t border-border relative overflow-hidden">
+    <section className="py-12 md:py-24 border-t border-border relative overflow-hidden">
       {/* 3D Background Elements */}
       <motion.div
         animate={{ y: [20, -20, 20], rotateZ: [0, -10, 10, 0] }}
@@ -68,7 +68,7 @@ export function FAQ() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="w-full py-8 flex justify-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-center relative z-20 text-white">
+          <h2 className="text-3xl md:text-5xl font-semibold text-center relative z-20 text-white">
             Have Questions? <br />
             I got <span className="font-serif italic font-medium text-[#ff90e8] text-[0.9em] tracking-normal">Answers</span>
           </h2>
@@ -93,18 +93,18 @@ export function FAQ() {
                 )}
               >
                 <span className={cn(
-                  "text-base md:text-xl font-medium transition-colors duration-300 pr-4",
+                  "text-sm md:text-xl font-medium transition-colors duration-300 pr-4",
                   openIndex === index ? "text-[#ff90e8]" : "text-white"
                 )}>
                   {faq.question}
                 </span>
                 <div className={cn(
-                  "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 shrink-0",
+                  "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-colors duration-300 shrink-0",
                   openIndex === index ? "bg-[#ff90e8]/20 text-[#ff90e8]" : "bg-white/5 text-text-secondary"
                 )}>
                   <ChevronDown 
                     className={cn(
-                      "w-5 h-5 transition-transform duration-500",
+                      "w-4 h-4 md:w-5 md:h-5 transition-transform duration-500",
                       openIndex === index ? "rotate-180" : ""
                     )} 
                   />

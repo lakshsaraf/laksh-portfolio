@@ -104,7 +104,7 @@ export function Navbar() {
                   target={link.name === 'Whatsapp' ? '_blank' : '_self'}
                   rel={link.name === 'Whatsapp' ? 'noopener noreferrer' : ''}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-4xl font-display font-bold tracking-tight text-text-secondary hover:text-white transition-colors hover-trigger"
+                  className="text-3xl font-display font-bold tracking-tight text-white transition-colors hover-trigger"
                 >
                   {link.name}
                 </a>

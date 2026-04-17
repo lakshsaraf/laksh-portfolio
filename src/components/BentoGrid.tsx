@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import { Code2, Smartphone, MonitorPlay, Cpu, ArrowUpRight, Video, PenTool, Share2 } from 'lucide-react';
 
@@ -22,8 +23,8 @@ export function BentoGrid() {
   };
 
   return (
-    <section id="services" className="py-16 md:py-24 relative border-t border-border overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="services" className="py-10 md:py-24 relative border-t border-border overflow-hidden">
+      <div className="container mx-auto px-4 md:px-12">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +32,7 @@ export function BentoGrid() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="w-full py-8 flex justify-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-center relative z-20 text-white">
+          <h2 className="text-3xl md:text-5xl font-semibold text-center relative z-20 text-white">
              Boost Sales & Conversions <br />
             at <span className="inline-block px-3 py-1 bg-white/10 rounded-md italic font-serif mt-2">light speed</span>
           </h2>
@@ -47,7 +48,7 @@ export function BentoGrid() {
           {/* Left Column */}
           <div className="flex flex-col gap-4 w-full md:w-1/2 px-4 md:px-0">
             {/* SMMA */}
-            <motion.div variants={itemVariants} className="bento-card flex gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,144,232,0.15)] transition-all duration-500 overflow-hidden relative">
+            <motion.div variants={itemVariants} className="bento-card flex gap-4 md:gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,144,232,0.15)] transition-all duration-500 overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <motion.div 
                 animate={{ y: [0, -5, 0] }} 
@@ -66,7 +67,7 @@ export function BentoGrid() {
             </motion.div>
 
             {/* Web Dev */}
-            <motion.div variants={itemVariants} className="bento-card flex gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(96,165,250,0.15)] transition-all duration-500 overflow-hidden relative">
+            <motion.div variants={itemVariants} className="bento-card flex gap-4 md:gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(96,165,250,0.15)] transition-all duration-500 overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <motion.div 
                 animate={{ y: [0, 5, 0] }} 
@@ -85,7 +86,7 @@ export function BentoGrid() {
             </motion.div>
 
             {/* Trusted Companies Marquee */}
-            <motion.div variants={itemVariants} className="bento-card flex flex-col justify-between min-h-[240px] hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,255,255,0.05)] transition-all duration-500">
+            <motion.div variants={itemVariants} className="bento-card flex flex-col justify-between min-h-[220px] md:min-h-[240px] hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,255,255,0.05)] transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="relative z-10">
                 <h5 className="text-xl font-semibold mb-1 text-white group-hover:text-white/80 transition-colors">Brands I've Worked With</h5>
@@ -104,9 +105,9 @@ export function BentoGrid() {
           </div>
 
           {/* Right Column */}
-          <div className="flex flex-col gap-4 w-full md:w-1/2 px-4 md:px-0">
+          <div className="flex flex-col gap-4 w-full md:w-1/2 px-4 md:px-0 mt-4 md:mt-0">
             {/* $100k Saved */}
-            <motion.div variants={itemVariants} className="bento-card flex flex-col min-h-[240px] group hover-trigger cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(74,222,128,0.15)] transition-all duration-500 relative overflow-hidden">
+            <motion.div variants={itemVariants} className="bento-card flex flex-col min-h-[220px] md:min-h-[240px] group hover-trigger cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(74,222,128,0.15)] transition-all duration-500 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="relative z-10">
                 <h5 className="text-xl font-semibold mb-1 text-white group-hover:text-[#4ade80] transition-colors">Driving ROI for Brands</h5>
@@ -132,7 +133,7 @@ export function BentoGrid() {
             </motion.div>
 
             {/* Video Editing */}
-            <motion.div variants={itemVariants} className="bento-card flex gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.15)] transition-all duration-500 relative overflow-hidden">
+            <motion.div variants={itemVariants} className="bento-card flex gap-4 md:gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.15)] transition-all duration-500 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <motion.div 
                 animate={{ y: [0, -5, 0] }} 
@@ -151,7 +152,7 @@ export function BentoGrid() {
             </motion.div>
 
             {/* Graphic Design */}
-            <motion.div variants={itemVariants} className="bento-card flex gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.15)] transition-all duration-500 relative overflow-hidden">
+            <motion.div variants={itemVariants} className="bento-card flex gap-4 md:gap-6 items-center hover-trigger group cursor-pointer hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.15)] transition-all duration-500 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <motion.div 
                 animate={{ y: [0, 5, 0] }} 

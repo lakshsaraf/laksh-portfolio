@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, X } from 'lucide-react';
+import imgMobile from '../assets/IMG_0761.PNG';
 
 const projects = [
   {
@@ -8,7 +9,7 @@ const projects = [
     title: 'Mobile & Mobile',
     description: 'Comprehensive social media management and growth strategy for 3 local mobile and accessories shops.',
     tags: ['Social Media', 'Growth'],
-    image: '/IMG_0761.PNG',
+    image: imgMobile,
     link: 'https://www.instagram.com/mandmbrt/',
     isLogo: true,
   },
@@ -39,23 +40,9 @@ const projects = [
     tags: ['Affiliate', 'Marketing'],
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200',
   },
-  {
-    id: 'rotary',
-    title: 'Rotary Club Downtown',
-    description: 'Won 1st Prize in the Digital Poster Making Competition organized by Rotary Club Biratnagar Downtown, competing against multiple schools.',
-    tags: ['Graphic Design', 'Award'],
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200',
-  },
-  {
-    id: 'agrawal',
-    title: 'Nepal Agrawal Kanya Manch',
-    description: 'Secured 1st Prize in the Poster Making Competition organized by Nepal Agrawal Kanya Manch, showcasing top-tier design skills.',
-    tags: ['Poster Design', 'Award'],
-    image: 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&q=80&w=1200',
-  },
 ];
 
-function ProjectCard({ project, index, onOpenModal }: { project: any, index: number, onOpenModal: (project: any) => void }) {
+const ProjectCard: React.FC<{ project: any, index: number, onOpenModal: (project: any) => void }> = ({ project, index, onOpenModal }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -74,7 +61,7 @@ function ProjectCard({ project, index, onOpenModal }: { project: any, index: num
       className="group flex flex-col bg-[#111111] border border-white/10 rounded-[24px] overflow-hidden hover:border-white/20 transition-colors relative z-10 perspective-1000"
     >
       {/* Image Container */}
-      <div className="relative h-[200px] md:h-[240px] w-full overflow-hidden bg-[#1a1a1a]">
+      <div className="relative h-[180px] md:h-[240px] w-full overflow-hidden bg-[#1a1a1a]">
         <motion.img 
           style={{ y, scale: 1.1 }}
           src={project.image} 
@@ -85,9 +72,9 @@ function ProjectCard({ project, index, onOpenModal }: { project: any, index: num
       </div>
       
       {/* Content Container */}
-      <div className="flex flex-col flex-grow p-6 md:p-8">
-        <h4 className="text-2xl font-bold text-white mb-3">{project.title}</h4>
-        <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+      <div className="flex flex-col flex-grow p-4 md:p-8">
+        <h4 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">{project.title}</h4>
+        <p className="text-gray-400 text-xs md:text-sm mb-4 md:mb-6 line-clamp-3 leading-relaxed">
           {project.description}
         </p>
         
@@ -129,7 +116,7 @@ export function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
   return (
-    <section id="work" className="py-16 md:py-24 relative bg-background overflow-hidden perspective-1000">
+    <section id="work" className="py-12 md:py-24 relative bg-background overflow-hidden perspective-1000">
       {/* 3D Floating Background Elements */}
       <motion.div
         animate={{ 
@@ -160,10 +147,10 @@ export function Portfolio() {
           transition={{ duration: 0.6 }}
           className="mb-16 flex flex-col items-center justify-center text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
             Our Previous Work
           </h2>
-          <p className="text-gray-400 max-w-2xl text-lg">
+          <p className="text-gray-400 max-w-2xl text-base md:text-lg">
             See the projects we've built for our clients. From local businesses to digital startups, we create solutions that work.
           </p>
         </motion.div>
