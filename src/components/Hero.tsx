@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { ArrowUpRight, MessageCircle, Sparkles, Download } from 'lucide-react';
+import { MessageCircle, Sparkles, Download } from 'lucide-react';
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -135,23 +135,25 @@ export function Hero() {
           <motion.div 
             custom={50}
             variants={itemVariants} 
-            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0"
+            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 w-full px-4 sm:px-0"
           >
             <a
               href="https://wa.me/9779702292536?text=Hi%20Laksh,%20I'd%20like%20to%20book%20a%20free%20discovery%20call!"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center justify-center gap-2 px-8 py-4 bg-[#ff90e8] text-black rounded-lg font-sans font-semibold text-sm hover:scale-105 transition-all hover-trigger w-full sm:w-auto shadow-[0_0_20px_rgba(255,144,232,0.4)] overflow-hidden"
+              className="group relative flex items-center justify-center gap-2 px-8 py-4 bg-[#ff90e8] text-black rounded-lg font-sans font-semibold text-sm hover:scale-105 transition-all hover-trigger w-full sm:w-auto shadow-[0_0_20px_rgba(255,144,232,0.4)] overflow-hidden shrink-0"
             >
               <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
               <MessageCircle className="w-4 h-4 relative z-10" />
               <span className="relative z-10">LET'S TALK</span>
             </a>
+            
             <a
-              href="/Laksh_Saraf_CV.pdf"
-              target="_blank"
+              href="/Laksh_Saraf_CV-PDF.pdf"
               download="Laksh_Saraf_CV.pdf"
-              className="group flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-sans font-semibold text-sm text-white bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all w-full sm:w-auto hover-trigger shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-sans font-semibold text-sm text-white bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all w-full sm:w-auto hover-trigger shadow-[0_8px_32px_rgba(0,0,0,0.3)] cursor-pointer"
             >
               <Download className="w-4 h-4" />
               <span>DOWNLOAD CV</span>
