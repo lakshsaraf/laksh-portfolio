@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { MessageCircle, Sparkles, Download } from 'lucide-react';
+import cvPdf from '../assets/Laksh_Saraf_CV.pdf';
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -149,7 +150,7 @@ export function Hero() {
             </a>
             
             <a
-              href="/Laksh_Saraf_CV-PDF.pdf"
+              href={cvPdf}
               download="Laksh_Saraf_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
